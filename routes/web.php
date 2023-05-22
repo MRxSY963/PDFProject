@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\PostsController;
+use App\Http\Controllers\CoursesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,15 +22,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PagesController::class, 'index']);
 
-Route::resource('/blog', PostsController::class);
+Route::resource('Courses', CourseController::class)->parameters([
+    'Courses' => 'course',
+]);
+
+Route::resource('CoursesAll', CoursesController::class)->parameters([
+    'CoursesAll' => 'course',
+]);
+
 
 
 
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

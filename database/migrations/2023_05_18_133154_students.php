@@ -11,17 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('slug');
-            $table->string('title');
-            $table->longText('description');
-            $table->string('image_path');
+            $table->string('student_name');
+            $table->string('guardian_name');
+            $table->integer('installment_number');
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-
-        });
+        });        
     }
 
     /**

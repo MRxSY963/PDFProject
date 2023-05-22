@@ -6,6 +6,7 @@
 
 import './bootstrap';
 import { createApp } from 'vue';
+import 'flowbite';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -17,6 +18,69 @@ const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
+
+
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    document.getElementById('defaultModalButton').click();
+});
+
+
+
+
+// Loading Effect
+
+// Wait for the DOM content to load
+document.addEventListener("DOMContentLoaded", function() {
+    // Select all HTML elements except for the loader
+    const elementsToHide = document.querySelectorAll("body > :not(.loader)");
+  
+    // Select the loader element
+    const loader = document.querySelector(".loader");
+  
+    // Hide all elements except for the loader
+    elementsToHide.forEach(function(element) {
+      element.style.display = "none";
+    });
+  
+    // Function to show all elements and hide the loader after 5 seconds
+    function showElements() {
+      setTimeout(function() {
+        elementsToHide.forEach(function(element) {
+          element.style.display = "";
+        });
+        loader.style.display = "none";
+      }, 2000);
+    }
+  
+    // Call the showElements function to initiate the loading effect
+    showElements();
+  });
+
+
+
+
+  // Alert Effect
+
+  const element = document.getElementById('alert');
+  const sectionAlert = document.getElementsByClassName('sectionAfterAlert')[0];
+  
+  // Remove the element after a delay of 5 seconds
+  setTimeout(() => {
+    if (element) {
+      sectionAlert.style.marginTop = '-77px';
+    }
+  }, 5000);
+  
+
+
+
+  
+  
+  
+  
+  
+  
 
 /**
  * The following block of code may be used to automatically register your

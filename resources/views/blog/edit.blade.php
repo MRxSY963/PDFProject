@@ -21,10 +21,9 @@
 
 
       {{-- Image --}}
-      <div class="flex items-center justify-center pb-10 ">
-          {{-- <img src="/images/{{$post-> image_path}}" class="border sm:grid grid-cols-2 shadow-xl w-1/2 h-1/2 rounded-xl items-center mx-auto" alt=""> --}}
-          <img id="preview-image" src="" class="border sm:grid grid-cols-2 shadow-xl w-1/2 h-1/2 rounded-xl items-center mx-auto" alt="">
-          <a href="/blog">
+      <div class="flex items-center justify-center pb-10">
+        <img id="preview-image" src="/images/{{$post->image_path}}" class="border sm:grid grid-cols-2 shadow-xl w-1/2 h-1/2 rounded-xl items-center mx-auto" alt="">
+        <a href="/blog">
           <svg class="mt-20 bg-black rounded-2xl" height="50" width="50" style="position: absolute; top: 50px; right: 50px;">
             <line x1="10" y1="10" x2="40" y2="40" style="stroke:red;stroke-width:3" />
             <line x1="40" y1="10" x2="10" y2="40" style="stroke:red;stroke-width:3" />
@@ -63,21 +62,27 @@
 </div>
 
 <script>
-  $(document).ready(function() {
-      // ابحث عن الصورة باستخدام معرف الصورة
-      var img = $('#preview-image');
-  
-      // عند تحميل الصفحة ، غير مصدر الصورة لعنوان URL الخاص بالصورة
-      img.attr('src', '/images/{{$post-> image_path}}');
-  });
-  </script>
+  // Find the image using the image ID
+var img = document.getElementById('preview-image');
+
+// Find the file input using the input ID
+var input = document.getElementById('dropzone-file');
+
+// Handle file input change event
+input.addEventListener('change', function() {
+  var file = this.files[0];
+  var reader = new FileReader();
+
+  // When the image is loaded, update the preview image source
+  reader.onload = function(e) {
+    img.src = e.target.result;
+  };
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+});
+
+</script>
 @endif
-
-
-
-
-
-
-
-
 @endsection
